@@ -2,7 +2,12 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "burger-menu": "#dbeafe",
+        "burger-menu-hover": "#eff6ff",
+      },
+    },
   },
   plugins: [],
 };
