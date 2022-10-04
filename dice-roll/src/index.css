@@ -1,0 +1,3 @@
+@import "./utils/UI/styleReset.css";
+@tailwind components;
+@tailwind utilities;
