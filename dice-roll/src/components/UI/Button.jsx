@@ -11,8 +11,8 @@ const Button = ({ children, modifiers, type, onClick }) => {
 
   return (
     <button
-      className={`${defaultBtn} ${modifiers}`}
-      type={types[type]}
+      className={`${defaultBtn} ${types[type]} ${modifiers}`}
+      type={"button" || type}
       onClick={onClick}
     >
       {children}
