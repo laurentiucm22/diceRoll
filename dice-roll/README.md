@@ -1,3 +1,9 @@
+#Welcome to my take on the small game : "Pig Game";
+
+I used React, React Context, tailwindcss and a few more libraries for this project.
+
+I hope you enjoy it as much as I have building it.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

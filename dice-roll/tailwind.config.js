@@ -4,8 +4,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "burger-menu": "#dbeafe",
-        "burger-menu-hover": "#eff6ff",
+        "burger-menu": "#c084fc",
+        "nav-links": "#c084fc",
+        "nav-social-media": "#c084fc",
+        "nav-text": "#f3f4f6",
+      },
+      backgroundImage: {
+        "app-cover": "url(./assets/images/background/appcover.jpg)",
       },
     },
   },

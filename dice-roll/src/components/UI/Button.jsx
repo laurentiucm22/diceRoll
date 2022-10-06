@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ children, modifiers, type, onClick }) => {
+const Button = ({ children, modifiers, type, onClick, style }) => {
   const defaultBtn = "font-medium";
 
   const types = {
@@ -14,6 +14,7 @@ const Button = ({ children, modifiers, type, onClick }) => {
       className={`${defaultBtn} ${types[type]} ${modifiers}`}
       type={"button" || type}
       onClick={onClick}
+      style={style}
     >
       {children}
     </button>
