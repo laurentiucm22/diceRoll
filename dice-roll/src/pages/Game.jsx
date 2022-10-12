@@ -3,13 +3,18 @@ import { IMAGES } from "../constants/constants";
 import Button from "../components/UI/Button";
 import Card from "../components/UI/Card";
 import Page from "../components/UI/Page";
+import { useStateValue } from "../context/StateProvider";
+import { actionType } from "../context/reducer";
+import { INITIAL_STATE } from "../context/initialState";
 
 const Game = ({ playerName }) => {
   const [currentScore, setCurrentScore] = useState(0);
   const [showImage, setShowImage] = useState(false);
   const [displayImages, setDisplayImages] = useState({});
 
-  const randomDiceValue = Math.trunc(Math.random() * 6) + 1;
+  const randomDiceValue = INITIAL_STATE.randomDiceValue;
+
+  let [state, dispatch] = useStateValue();
 
   const getImages = [...IMAGES].find((image) => {
     return image.id === randomDiceValue;
@@ -19,12 +24,16 @@ const Game = ({ playerName }) => {
     setShowImage(true);
     setDisplayImages(getImages);
 
-    if (randomDiceValue !== 1) {
-      setCurrentScore((prevState) => {
-        return (prevState += randomDiceValue);
+    if (INITIAL_STATE.randomDiceValue !== 1) {
+      dispatch({
+        type: actionType.sumScore,
+        randomDiceValue: state.randomDiceValue,
       });
     } else {
-      setCurrentScore(0);
+      dispatch({
+        type: actionType.sumScore,
+        score: 0,
+      });
     }
   };
 
@@ -73,7 +82,7 @@ const Game = ({ playerName }) => {
           </div>
           <div>
             <h2>Current</h2>
-            <p>{currentScore}</p>
+            <p>{state.score}</p>
           </div>
         </section>
         <section

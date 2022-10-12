@@ -3,15 +3,12 @@ export const actionType = {
   sumTotalScore: "SUM_TOTAL_SCORE",
 };
 
-const reducer = ({ action, state }) => {
-  console.log(action);
-
+const reducer = (state, action) => {
   switch (action?.type) {
     case actionType.sumScore:
-      console.log(state.score);
-      return { ...state, sumScore: state.score + action.payload };
+      return { ...state, score: state.score + state.randomDiceValue };
     case actionType.sumTotalScore:
-      return { ...state, sumTotalScore: state.totalScore + action.payload };
+      return { ...state, totalScore: state.totalScore + state.score };
     default:
       return state;
   }
