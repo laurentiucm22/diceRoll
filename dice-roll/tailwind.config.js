@@ -12,6 +12,15 @@ module.exports = {
       backgroundImage: {
         "app-cover": "url(./assets/images/background/appcover.jpg)",
       },
+      animation: {
+        pulse: "pulse 4s infinite;",
+      },
+      keyframes: {
+        pulse: {
+          "0%": { boxShadow: " 0 0 0 0px rgba(0, 0, 0, 0.2)" },
+          "100%": { boxShadow: " 0 0 0 20px rgba(0, 0, 0, 0)" },
+        },
+      },
     },
   },
   plugins: [],

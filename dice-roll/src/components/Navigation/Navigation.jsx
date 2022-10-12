@@ -12,13 +12,13 @@ const Navigation = () => {
   const navAnimation = {
     background:
       "linear-gradient(to right bottom, rgba(255, 255, 255, 0.5),rgba(255, 255, 255, 0.4) )",
-    WebkitTransition: "all 0.6s cubic-bezier(.42, 0, .58, 1)",
-    transition: "all 0.6s cubic-bezier(.42, 0, .58, 1)",
+    WebkitTransition: "all 0.5s cubic-bezier(.42, 0, .58, 1)",
+    transition: "all 0.5s cubic-bezier(.42, 0, .58, 1)",
     backdropFilter: "blur(2rem)",
   };
 
   // prettier-ignore
-  const burgerBtnModifiers = "w-50 p-2 rounded-full absolute top-4 right-4 rounded-full hover:bg-burger-menu p-2 transition-all duration-300 ease-in-out font-medium z-50 hover:text-nav-text";
+  const burgerBtnModifiers = "w-50 p-2 rounded-full absolute top-4 right-4 rounded-full hover:animate-pulse hover:bg-burger-menu p-2 transition-all duration-300 ease-in-out font-medium z-50 hover:text-nav-text"
 
   return (
     <nav

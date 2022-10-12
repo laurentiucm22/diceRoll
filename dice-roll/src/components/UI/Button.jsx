@@ -1,7 +1,8 @@
 import React from "react";
 
-const Button = ({ children, modifiers, type, onClick, style }) => {
-  const defaultBtn = "font-medium";
+const Button = ({ children, modifiers, type, onClick, style }, props) => {
+  const defaultBtn =
+    "font-medium active:translate-y-1 transition-all duration-200";
 
   const types = {
     newGame: "",

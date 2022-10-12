@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <Router>
-    <StateProvider initialState={INITIAL_STATE} reducer={reducer}>
+    <StateProvider reducer={reducer} initialState={INITIAL_STATE}>
       <App />
     </StateProvider>
   </Router>

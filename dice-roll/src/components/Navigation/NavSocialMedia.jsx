@@ -8,7 +8,7 @@ const NavSocialMedia = () => {
         return (
           <div
             key={id}
-            className="flex items-center justify-center w-10 h-10 mb-5 duration-300 rounded-full cursor-pointer hover:bg-nav-social-media transition-bg hover:text-nav-text"
+            className="flex items-center justify-center w-10 h-10 mb-5 duration-300 rounded-full cursor-pointer hover:bg-nav-social-media transition-bg hover:text-nav-text hover:animate-pulse"
           >
             <a
               href={link}
