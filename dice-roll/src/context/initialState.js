@@ -3,5 +3,5 @@ export const INITIAL_STATE = {
   totalScore: 0,
   playerOneName: "",
   playerTwoName: "",
-  randomDiceValue: Math.trunc(Math.random() * 6) + 1,
+  randomDiceValue: 0,
 };

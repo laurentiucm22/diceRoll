@@ -5,36 +5,30 @@ import Card from "../components/UI/Card";
 import Page from "../components/UI/Page";
 import { useStateValue } from "../context/StateProvider";
 import { actionType } from "../context/reducer";
-import { INITIAL_STATE } from "../context/initialState";
 
 const Game = ({ playerName }) => {
-  const [currentScore, setCurrentScore] = useState(0);
   const [showImage, setShowImage] = useState(false);
-  const [displayImages, setDisplayImages] = useState({});
+  const [{ score, randomDiceValue, totalScore }, dispatch] = useStateValue();
 
-  const randomDiceValue = INITIAL_STATE.randomDiceValue;
-
-  let [state, dispatch] = useStateValue();
-
-  const getImages = [...IMAGES].find((image) => {
-    return image.id === randomDiceValue;
-  });
+  let getImages = [];
+  if (randomDiceValue !== 0) {
+    getImages = [...IMAGES].find((image) => {
+      return image.id === randomDiceValue;
+    });
+  }
 
   const rollDiceHandler = () => {
     setShowImage(true);
-    setDisplayImages(getImages);
 
-    if (INITIAL_STATE.randomDiceValue !== 1) {
-      dispatch({
-        type: actionType.sumScore,
-        randomDiceValue: state.randomDiceValue,
-      });
+    if (randomDiceValue === 1) {
+      dispatch({ type: actionType.init });
     } else {
-      dispatch({
-        type: actionType.sumScore,
-        score: 0,
-      });
+      dispatch({ type: actionType.sumScore });
     }
+  };
+
+  const holdScoreHandler = () => {
+    dispatch({ type: actionType.sumTotalScore });
   };
 
   const playerBackLayer = {
@@ -54,7 +48,7 @@ const Game = ({ playerName }) => {
               className={`${
                 !showImage ? "hidden" : "block"
               } ${"w-30 h-28 mt-3"}`}
-              src={displayImages.src}
+              src={getImages !== [] ? getImages.src : null}
               alt="dice"
             />
             ;
@@ -66,7 +60,10 @@ const Game = ({ playerName }) => {
             >
               Roll Dice
             </Button>
-            <Button modifiers="text-white text-xl bg-purple-400 rounded-3xl py-2 px-8 mb-6">
+            <Button
+              modifiers="text-white text-xl bg-purple-400 rounded-3xl py-2 px-8 mb-6"
+              onClick={holdScoreHandler}
+            >
               Hold
             </Button>
           </div>
@@ -78,11 +75,11 @@ const Game = ({ playerName }) => {
           <div>
             <h3 className="text-md">Player 1</h3>
             <p>{playerName}</p>
-            <p>0</p>
+            <p>{totalScore}</p>
           </div>
           <div>
             <h2>Current</h2>
-            <p>{state.score}</p>
+            <p>{score}</p>
           </div>
         </section>
         <section
@@ -92,11 +89,11 @@ const Game = ({ playerName }) => {
           <div>
             <h3 className="text-md">Player 2</h3>
             <p>{playerName}</p>
-            <p>0</p>
+            <p>{totalScore}</p>
           </div>
           <div>
             <h2>Current</h2>
-            <p>{currentScore}</p>
+            <p>{score}</p>
           </div>
         </section>
       </Card>
